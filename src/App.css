@@ -36,7 +36,7 @@
   top: -7px;
   color: #FFF;
   font-size: 12px;
-  padding: 5px 7px;
+  padding: 3px 7px;
 }
 
 .app-header-avatar {
@@ -51,19 +51,19 @@
 .app-header-avatar-white-circle {
   position: absolute;
   background-color: #FFF;
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   left: 77px;
-  top: 0px;
+  top: -1px;
 }
 
 .app-header-avatar-avatar{
   position: absolute;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  left: 139px;
+  left: 140px;
   top: 2px;
 }
 
@@ -80,6 +80,11 @@
   width: 100%;
   height: 100%;
   margin-left: 270px;
+  transition: margin-left 0.3s;
+}
+
+.app-main-hidden {
+  margin-left: 110px;
 }
 
 .app-left-menu {
@@ -89,6 +94,7 @@
   width: 270px;
   height: 100vh;
   position: absolute;
+  transition: width 0.3s;
   left: 0;
   top: 0;
   box-shadow: 18px 4px 35px rgba(0, 0, 0, 0.02);
@@ -97,19 +103,6 @@
 .app-left-menu-nav {
   display: flex;
   flex-direction: column;
-}
-
-.app-left-menu-logo-container {
-  height: 70px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.app-left-menu-logo svg {
-  transform: scale(0.7);
-  cursor: pointer;
 }
 
 .app-left-menu-nav-link {
@@ -145,4 +138,33 @@
 .nav-link-bar {
   position: absolute;
   left: 0px;
+}
+
+
+.app-left-menu-logo-container {
+  position: relative;
+  height: 70px;
+}
+
+.app-left-menu-burger {
+  cursor: pointer;
+  transform: scale(0.05);
+  position: absolute;
+  top: -230px;
+  right: -211px;
+  transition: transform 0.3s;
+}
+
+.app-left-menu-burger-hidden {
+  transform: scale(0.05) rotate(90deg) !important;
+}
+
+.app-left-menu-logo {
+  transform: scale(0.7);
+  width: 170px;
+  cursor: pointer;
+}
+
+.app-left-menu-hidden {
+  width: 110px;
 }
