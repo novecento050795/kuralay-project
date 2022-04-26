@@ -1,0 +1,38 @@
+.sales-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 15px 40px;
+}
+
+.sales-main div div {
+    box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.sales-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sales-header-dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sales-main-dashboards {
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+
+.sales-main-dashboards div {
+    width: 50%;
+}
+
