@@ -1,3 +1,7 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 .sales-main {
     height: 100%;
     display: flex;
@@ -6,7 +10,7 @@
     padding: 15px 40px;
 }
 
-.sales-main div div {
+.white-card {
     box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
     background-color: #fff;
     border-radius: 15px;
@@ -23,7 +27,14 @@
 .sales-header-dashboard {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.sales-header-dashboard > div {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
 }
 
 .sales-main-dashboards {
@@ -32,7 +43,39 @@
     gap: 35px;
 }
 
-.sales-main-dashboards div {
+.sales-main-dashboards > div {
     width: 50%;
 }
+
+.sales-header-dashboard-revenue-round-logo {
+    background-color: #DEE4FF;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+}
+
+.sales-header-dashboard-revenue-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.sales-header-dashboard-revenue-data-total {
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.sales-header-dashboard-revenue-data-title {
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.sales-header-dashboard-revenue-data-percentage > span {
+    font-size: 12px;
+    color: #969BA0;
+}
+
 

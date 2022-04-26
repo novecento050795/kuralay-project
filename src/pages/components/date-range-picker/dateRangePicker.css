@@ -1,0 +1,36 @@
+.date-range-picker-main {
+    background-color: #F4F5F9;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.date-range-picker-text {
+    display: flex;
+    flex-direction: column;
+    color: #3E4954;
+}
+
+.date-range-picker-text-title {
+    font-weight: bolder;
+}
+
+.date-range-picker-text-range {
+    font-size: 10px;
+}
+
+.date-range-picker-button {
+    cursor: pointer;
+}
+
+.date-range-picker-drop-down {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    transition: display 0.5x;
+}
