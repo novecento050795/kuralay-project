@@ -6,24 +6,41 @@ export default class DateRangePicker extends React.Component {
     constructor(props) {
         super(props);
 
-        const today = new Date();
+        const dateTo = new Date();
+        let dateFrom = new Date();
+        dateFrom.setDate(dateFrom.getDate() - 7);
 
         this.state = {
             datePickerView: false,    
-            dateFrom: new Date(today.getDate() - 7),
-            dateTo: today
+            dateFrom: dateFrom,
+            dateTo: dateTo
         }
     }
 
     datePickerOnViewChange(view = null) {
-        console.log('hello');
-        // this.setState({
-        //     ...this.state,
-        //     datePickerView: view === null ? !this.state.datePickerView : view
-        // })
+        this.setState({
+            datePickerView: view === null ? !this.state.datePickerView : view
+        })
     }
 
+    onDatePickerSubmit() {
+        if (
+            this.state.dateFrom instanceof Date && 
+            this.state.dateTo instanceof Date &&
+            this.state.dateTo >= this.state.dateFrom
+        ) {
+            this.datePickerOnViewChange(false);
+        } else {
+            alert("Введите корректные даты!");
+        }
+        
+    }
 
+    updateInput(e) {
+        this.setState({
+            [e.target.name]: new Date(e.target.value)
+        })
+    }
 
     render() {
         return (
@@ -44,7 +61,13 @@ export default class DateRangePicker extends React.Component {
                         <path d="M1 0.999999L7 7L13 1" stroke="#D3D6E4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                 </div>
-                
+                <div className={'date-range-picker-drop-down ' + (this.state.datePickerView ? '' : 'date-range-picker-drop-down-hidden')}>
+                    <div className='date-range-picker-drop-down-datepickers'>
+                        <div>С: <br/> <input name='dateFrom' onChange={(e) => this.updateInput(e)} type='date' /></div>
+                        <div>По: <br/> <input name='dateTo' onChange={(e) => this.updateInput(e)} type='date' /></div>
+                    </div>
+                    <button className='date-range-picker-drop-down-button' onClick={() => this.onDatePickerSubmit()}>OK</button>
+                </div>
             </div>
         );
     }
