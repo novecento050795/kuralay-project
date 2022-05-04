@@ -1,7 +1,24 @@
 import React from 'react';
 import './sales.css';
-import DateRangePicker from '../components/date-range-picker/dateRangePicker';
+import DateRangePicker from '../../components/date-range-picker/dateRangePicker';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut, Pie } from 'react-chartjs-2';
+import { Link } from 'react-router-dom';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+export let data = {
+  datasets: [
+    {
+      data: [12, 19, 3],
+      backgroundColor: [
+        '#3E4954',
+        '#FF6D4C',
+        '#2BC155',
+      ]
+    },
+  ],
+};
 export default class Sales extends React.Component {
   render() {
     return (
@@ -19,7 +36,7 @@ export default class Sales extends React.Component {
             </div>
             <div className='sales-header-dashboard-revenue-data'>
               <div className='sales-header-dashboard-revenue-data-total'>1260000</div>
-              <div className='sales-header-dashboard-revenue-data-title'>Total revenue</div>
+              <div className='sales-header-dashboard-revenue-data-title'>Общий доход</div>
               <div className='sales-header-dashboard-revenue-data-percentage'>
                 <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.79204 6.5C4.13258 8.22772 1.04781 11.4157 0.0973511 12.5H19.2522V0.5L12.0044 9.5L5.79204 6.5Z" fill="url(#paint0_linear_10_166)"/>
@@ -54,7 +71,7 @@ export default class Sales extends React.Component {
             </div>
             <div className='sales-header-dashboard-revenue-data'>
               <div className='sales-header-dashboard-revenue-data-total'>279</div>
-              <div className='sales-header-dashboard-revenue-data-title'>Total Orders</div>
+              <div className='sales-header-dashboard-revenue-data-title'>Общие заказы</div>
               <div className='sales-header-dashboard-revenue-data-percentage'>
                 <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.79204 6.5C4.13258 8.22772 1.04781 11.4157 0.0973511 12.5H19.2522V0.5L12.0044 9.5L5.79204 6.5Z" fill="url(#paint0_linear_10_166)"/>
@@ -68,9 +85,9 @@ export default class Sales extends React.Component {
                 <svg width="26" height="13" viewBox="0 0 26 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M17.9439 6.5C20.0667 8.22772 24.0128 11.4157 25.2286 12.5H0.725655V0.5L9.99704 9.5L17.9439 6.5Z" fill="url(#paint0_linear_10_151)"/>
                   <defs>
-                  <linearGradient id="paint0_linear_10_151" x1="12.9771" y1="2" x2="12.4096" y2="12.523" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#F84E4E" stopOpacity="0.73"/>
-                    <stop offset="1" stopColor="#F84E4E" stopOpacity="0"/>
+                    <linearGradient id="paint0_linear_10_151" x1="12.9771" y1="2" x2="12.4096" y2="12.523" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#F84E4E" stopOpacity="0.73"/>
+                      <stop offset="1" stopColor="#F84E4E" stopOpacity="0"/>
                     </linearGradient>
                   </defs>
                 </svg>
@@ -88,7 +105,7 @@ export default class Sales extends React.Component {
             </div>
             <div className='sales-header-dashboard-revenue-data'>
               <div className='sales-header-dashboard-revenue-data-total'>65</div>
-              <div className='sales-header-dashboard-revenue-data-title'>Total Customers</div>
+              <div className='sales-header-dashboard-revenue-data-title'>Общие покупатели</div>
               <div className='sales-header-dashboard-revenue-data-percentage'>
                 <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.79204 6.5C4.13258 8.22772 1.04781 11.4157 0.0973511 12.5H19.2522V0.5L12.0044 9.5L5.79204 6.5Z" fill="url(#paint0_linear_10_166)"/>
@@ -114,7 +131,57 @@ export default class Sales extends React.Component {
           </div>
         </div>
         <div className='sales-main-dashboards'>
-          <div className='sales-main-dashboards-orders white-card'></div>
+          <div className='sales-main-dashboards-orders white-card'>
+            <div className='sales-main-dashboards-orders-header'>
+              <div className='sales-main-dashboards-orders-header-header'>Сводка заказов</div>
+              <div className='sales-main-dashboards-orders-header-text'>Сводка заказов за указанный период</div>
+            </div>
+            <div className='sales-main-dashboards-orders-orders'>
+              <div className='sales-main-dashboards-orders-orders-new'>
+                <div className='sales-main-dashboards-orders-orders-new-count'>25</div>
+                <div className='sales-main-dashboards-orders-orders-new-text'>
+                  <div>Новые заказы</div>
+                  <div>
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="5.5" cy="5.5" r="5.5" fill="#2BC155"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+                <Link to='/orders' className='sales-main-dashboards-orders-orders-link'>
+                  <div>Управление заказами</div>
+                  <div>
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 13L7 7L1 1" stroke="#2F4CDD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </Link>    
+            </div>
+            <div className='sales-main-dashboards-orders-dashboards'>
+              <div>
+                <div className='sales-main-dashboards-orders-dashboards-count'>25</div>
+                <div className='sales-main-dashboards-orders-dashboards-title'>На доставке</div>
+              </div>
+              <div>
+                <div className='sales-main-dashboards-orders-dashboards-count'>60</div>
+                <div className='sales-main-dashboards-orders-dashboards-title'>Доставлено</div>
+              </div>
+              <div>
+                <div className='sales-main-dashboards-orders-dashboards-count'>7</div>
+                <div className='sales-main-dashboards-orders-dashboards-title'>Отменено</div>
+              </div>
+            </div>
+            <div className='sales-main-dashboards-orders-diagram'>
+              <div className='sales-main-dashboards-orders-diagram-diagram'>
+              <Doughnut
+                data={data}
+              />
+              </div>
+              <div className='sales-main-dashboards-orders-diagram-summary'>
+
+              </div>
+            </div>
+          </div>
           <div className='sales-main-dashboards-revenue white-card'></div>
         </div>
         <div className='sales-gistogram-container'>

@@ -78,4 +78,104 @@
     color: #969BA0;
 }
 
+.sales-main-dashboards-orders {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sales-main-dashboards-orders > div {
+    width: 95%;
+}
+
+.sales-main-dashboards-orders-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.sales-main-dashboards-orders-header-header {
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.sales-main-dashboards-orders-header-text {
+    color: #969BA0;
+    font-size: 0.7em;
+}
+
+.sales-main-dashboards-orders-orders {
+    padding: 10px 15px;
+    background-color: #E9FFEF;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sales-main-dashboards-orders-orders-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    text-decoration: none;
+    color: #2F4CDD;
+    font-weight: 600;
+}
+
+.sales-main-dashboards-orders-orders-new {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sales-main-dashboards-orders-orders-new-count {
+    background-color: #2BC155;
+    border-radius: 8px;
+    padding: 8px 25px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.sales-main-dashboards-orders-orders-new-text {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.sales-main-dashboards-orders-dashboards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100% !important;
+}
+
+.sales-main-dashboards-orders-dashboards > div {
+    min-width: 28%;
+    border-radius: 12px;
+    border: 1px solid #F2F2F2;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sales-main-dashboards-orders-dashboards-count {
+    color: #3E4954;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+
+.sales-main-dashboards-orders-dashboards-title {
+    color: #969BA0;
+}
+
+.sales-main-dashboards-orders-diagram {
+    display: flex;
+    flex-direction: row;
+}
+
 
