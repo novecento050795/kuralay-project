@@ -1,0 +1,85 @@
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.orders-main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 15px 40px;
+}
+
+.orders-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.orders-table {
+  background-color: #FFF;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.orders-table-title > th, .orders-table-item > td {
+  text-align: center;
+  padding: 1rem 2rem;
+}
+
+.orders-table-title > th {
+  border-bottom: 1px solid #E9ECFF;
+}
+
+.orders-table-item > td {
+  color: #3E4954;
+}
+
+.orders-table-item-status {
+  border-radius: 10px;
+  padding: 3px 5px;
+}
+
+.status-new {
+  background-color: rgba(255, 109, 77, 0.1);
+  color: #FF6D4D;
+}
+
+.status-delivery {
+  background-color: rgba(47, 76, 221, 0.04);
+  color: #2F4CDD;
+}
+
+.status-done {
+  background-color: rgba(43, 193, 85, 0.05);
+  color: #2BC155;
+}
+
+.orders-table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orders-table-pagination-paginator {
+  display: flex;
+  gap: 10px;
+}
+
+.orders-table-pagination-paginator-pages {
+  display: flex;
+  padding: 3px;
+  background-color: #E3E4EB;
+  border-radius: 6px;
+}
+
+.orders-table-pagination-paginator-pages > div {
+  width: 20px;
+  height: 100%;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
