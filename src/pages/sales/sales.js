@@ -1,13 +1,32 @@
 import React from 'react';
 import './sales.css';
 import DateRangePicker from '../../components/date-range-picker/dateRangePicker';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut, Pie } from 'react-chartjs-2';
+import { 
+  Chart as ChartJS, 
+  ArcElement, 
+  Tooltip, 
+  Legend, 
+  CategoryScale, 
+  LinearScale, 
+  PointElement, 
+  LineElement, 
+  Title 
+} from 'chart.js';
+import { Doughnut, Line } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  ArcElement, 
+  Tooltip, 
+  Legend,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  );
 
-export let data = {
+export let doughnutData = {
   datasets: [
     {
       data: [12, 19, 3],
@@ -19,6 +38,61 @@ export let data = {
     },
   ],
 };
+
+export const lineChartOptions = {
+  responsive: true,
+  interaction: {
+    mode: 'index',
+    intersect: false,
+  },
+  stacked: false,
+  plugins: {
+    title: {
+      display: false,
+    }
+  },
+  scales: {
+    y: {
+      type: 'linear',
+      display: true,
+      position: 'left',
+    },
+    y1: {
+      type: 'linear',
+      display: true,
+      position: 'right',
+      grid: {
+        drawOnChartArea: false,
+      },
+    },
+  },
+};
+
+const labels = [
+  'January', 'February', 'March', 
+  'April', 'May', 'June', 
+  'July', 'August', 'September', 
+  'October', 'November', 'December'
+];
+
+export let lineChartData = {
+  labels,
+  datasets: [
+    {
+      label: 'Доход',
+      data: labels.map(month => Math.random(500)),
+      borderColor: '#2F4CDD',
+      backgroundColor: '#2F4CDD',
+    },
+    {
+      label: 'Расход',
+      data: labels.map(month => Math.random(500)),
+      borderColor: '#B519EC',
+      backgroundColor: '#B519EC',
+    },
+  ],
+};
+
 export default class Sales extends React.Component {
   render() {
     return (
@@ -174,18 +248,89 @@ export default class Sales extends React.Component {
             <div className='sales-main-dashboards-orders-diagram'>
               <div className='sales-main-dashboards-orders-diagram-diagram'>
               <Doughnut
-                data={data}
+                data={doughnutData}
               />
               </div>
               <div className='sales-main-dashboards-orders-diagram-summary'>
-
+                <div className='sales-main-dashboards-orders-diagram-summary-item'>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>На доставке (15%)</div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
+                    <div style={{width: '80%', 'backgroundColor': '#FF6D4C'}}></div>
+                  </div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-count'>25</div>
+                </div>
+                <div className='sales-main-dashboards-orders-diagram-summary-item'>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>Доставлено (15%)</div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
+                    <div style={{width: '60%', 'backgroundColor': '#2BC155'}}></div>
+                  </div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-count'>60</div>
+                </div>
+                <div className='sales-main-dashboards-orders-diagram-summary-item'>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>Отменено (15%)</div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
+                    <div style={{width: '40%', 'backgroundColor': '#3E4954'}}></div>
+                  </div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-count'>7</div>
+                </div>
               </div>
             </div>
           </div>
-          <div className='sales-main-dashboards-revenue white-card'></div>
+          <div className='sales-main-dashboards-revenue white-card'>
+            <div className='sales-main-dashboards-revenue-header'>
+              <div className='sales-main-dashboards-revenue-header-header'>Доход</div>
+              <div className='sales-main-dashboards-revenue-header-text'>Сводка доходов за указанный период</div>
+            </div>
+            <div className='sales-main-dashboards-revenue-data'>
+              <div className='sales-main-dashboards-revenue-data-titles'>
+                <div className='sales-main-dashboards-revenue-data-titles-item'>
+                  <div className='sales-main-dashboards-revenue-data-titles-item-square bg-blue'></div>
+                  <div className='sales-main-dashboards-revenue-data-titles-item-title'>Доход</div>
+                </div>
+                <div className='sales-main-dashboards-revenue-data-titles-item'>
+                  <div className='sales-main-dashboards-revenue-data-titles-item-square bg-purple'></div>
+                  <div className='sales-main-dashboards-revenue-data-titles-item-title'>Расход</div>
+                </div>
+              </div>
+              <div className='sales-main-dashboards-revenue-data-counts'>
+                <div className='sales-main-dashboards-revenue-data-counts-item'>
+                  <div className='sales-main-dashboards-revenue-data-counts-item-icon'>
+                    <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="3.54545" height="26" rx="1.77273" fill="#2F4CDD"/>
+                      <rect x="7.09094" y="7.09091" width="3.54545" height="18.9091" rx="1.77273" fill="#2F4CDD" fillOpacity="0.43"/>
+                      <rect x="14.1819" y="17.7273" width="3.54545" height="8.27273" rx="1.77273" fill="#2F4CDD"/>
+                      <rect x="21.2727" y="3.54547" width="3.54545" height="22.4545" rx="1.77273" fill="#2F4CDD" fillOpacity="0.78"/>
+                    </svg>
+                  </div>
+                  <div className='sales-main-dashboards-revenue-data-counts-item-data'>
+                    <div className='sales-main-dashboards-revenue-data-counts-item-data-title'>Доход</div>
+                    <div className='sales-main-dashboards-revenue-data-counts-item-data-total'>$126,000</div>
+                  </div>
+                </div>
+                <div className='sales-main-dashboards-revenue-data-counts-item'>
+                  <div className='sales-main-dashboards-revenue-data-counts-item-icon'>
+                   <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="3.54545" height="26" rx="1.77273" fill="#B519EC"/>
+                      <rect x="7.09094" y="7.09091" width="3.54545" height="18.9091" rx="1.77273" fill="#B519EC" fillOpacity="0.47"/>
+                      <rect x="14.1819" y="17.7273" width="3.54545" height="8.27273" rx="1.77273" fill="#B519EC"/>
+                      <rect x="21.2727" y="3.54547" width="3.54545" height="22.4545" rx="1.77273" fill="#B519EC" fillOpacity="0.67"/>
+                    </svg>
+                  </div>
+                  <div className='sales-main-dashboards-revenue-data-counts-item-data'>
+                    <div className='sales-main-dashboards-revenue-data-counts-item-data-title'>Расход</div>
+                    <div className='sales-main-dashboards-revenue-data-counts-item-data-total'>$126,000</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='sales-main-dashboards-revenue-chart'>
+              <Line options={lineChartOptions} data={lineChartData} />
+            </div>
+          </div>
         </div>
         <div className='sales-gistogram-container'>
-          <div className='sales-gistogram white-card'></div>
+          <div className='sales-gistogram white-card'>
+          </div>
         </div>
       </div>
     );

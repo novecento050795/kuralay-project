@@ -88,17 +88,17 @@
     width: 95%;
 }
 
-.sales-main-dashboards-orders-header {
+.sales-main-dashboards-orders-header, .sales-main-dashboards-revenue-header {
     display: flex;
     flex-direction: column;
 }
 
-.sales-main-dashboards-orders-header-header {
+.sales-main-dashboards-orders-header-header, .sales-main-dashboards-revenue-header-header {
     font-weight: 400;
     font-size: 1.5em;
 }
 
-.sales-main-dashboards-orders-header-text {
+.sales-main-dashboards-orders-header-text, .sales-main-dashboards-revenue-header-text {
     color: #969BA0;
     font-size: 0.7em;
 }
@@ -176,6 +176,93 @@
 .sales-main-dashboards-orders-diagram {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 30px;
 }
 
+.sales-main-dashboards-orders-diagram-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
+.sales-main-dashboards-orders-diagram-summary > div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.sales-main-dashboards-orders-diagram-summary-item-title {
+    min-width: 140px;
+    color: #3E4954;
+    font-weight: 500, Medium;
+}
+
+.sales-main-dashboards-orders-diagram-summary-item-count {
+    color: #969BA0;
+    font-weight: 500, Medium;
+}
+
+.sales-main-dashboards-orders-diagram-summary-item-bar {
+    background-color: #F3F3F3;
+    width: 150px;
+    height: 5px;
+    border-radius: 8px;
+}
+
+.sales-main-dashboards-orders-diagram-summary-item-bar > div {
+    height: 100%;
+    border-radius: 8px;
+}
+
+.sales-main-dashboards-revenue-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sales-main-dashboards-revenue-data > div {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.sales-main-dashboards-revenue-data > div > div {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.sales-main-dashboards-revenue-data-titles-item-square {
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+}
+
+.bg-blue {
+    background-color: #2F4CDD;
+}
+
+.bg-purple {
+    background-color: #B519EC;
+}
+
+.sales-main-dashboards-revenue-data-counts-item {
+    align-items: flex-end !important;
+}
+
+.sales-main-dashboards-revenue-data-counts-item-data-title {
+    color: #969BA0;
+    font-size: 0.8rem;
+}
+
+.sales-main-dashboards-revenue-data-counts-item-data-total {
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.sales-main-dashboards-revenue-chart {
+    margin-top: 100px;
+}
