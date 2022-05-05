@@ -7,6 +7,7 @@ import Sales from './pages/sales/sales';
 import Orders from './pages/orders/orders';
 import Products from './pages/products/products';
 import Analytics from './pages/analytics/analytics';
+import Clients from './pages/clients/clients';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,6 +19,7 @@ root.render(
         <Route path="orders" element={<Orders />} />
         <Route path="products" element={<Products />} />
         <Route path="analytics" element={<Analytics />} />
+        <Route path="clients" element={<Clients />} />
         <Route
           path="*"
           element={
