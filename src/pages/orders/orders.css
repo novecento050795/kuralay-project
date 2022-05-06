@@ -61,6 +61,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 30px;
 }
 
 .orders-table-pagination-paginator {
@@ -76,10 +77,38 @@
 }
 
 .orders-table-pagination-paginator-pages > div {
-  width: 20px;
+  width: 35px;
   height: 100%;
   text-align: center;
-  background-color: #fff;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: bolder;
+}
+
+.page-btn-active {
+  background-color: #fff;
+  color: 000;
+}
+
+.page-btn-inactive {
+  color: #2F4CDD;
+}
+
+.orders-table-pagination-paginator-btn {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 5px 8px;
+  color: #FFF;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.paginator-btn-forward {
+  background-color: #2F4CDD;
+}
+
+.paginator-btn-back {
+  background-color: #969BA0;
 }
