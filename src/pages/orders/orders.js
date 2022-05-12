@@ -805,7 +805,7 @@ export default class Orders extends React.Component {
                     index < (this.state.page * 10 + 1)
                   )
                 ).length
-              } из 160 заказов
+              } из {this.state.orders.length} заказов
             </div>
             <div className='orders-table-pagination-paginator'>
               <div onClick={() => this.onPageSelected(-1, true)} className='orders-table-pagination-paginator-btn paginator-btn-back'>

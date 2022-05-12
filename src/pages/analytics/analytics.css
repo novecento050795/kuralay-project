@@ -1,0 +1,295 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.analytics-main {
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 15px 40px;
+}
+
+.white-card {
+  box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.analytics-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.analytics-header-dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.analytics-header-dashboard > div {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+}
+
+.analytics-main-dashboards {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.analytics-main-dashboards > div {
+  width: 95%;
+  height: 50%;
+}
+
+.analytics-header-dashboard-revenue-round-logo {
+  background-color: #DEE4FF;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+}
+
+.analytics-header-dashboard-revenue-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.analytics-header-dashboard-revenue-data-total {
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.analytics-header-dashboard-revenue-data-title {
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.analytics-header-dashboard-revenue-data-percentage > span {
+  font-size: 12px;
+  color: #969BA0;
+}
+
+.analytics-main-dashboards-orders {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.analytics-main-dashboards-orders > div {
+  width: 95%;
+}
+
+.analytics-main-dashboards-orders-header, .analytics-main-dashboards-revenue-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.analytics-main-dashboards-orders-header-header, .analytics-main-dashboards-revenue-header-header {
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.analytics-main-dashboards-orders-header-text, .analytics-main-dashboards-revenue-header-text {
+  color: #969BA0;
+  font-size: 0.7em;
+}
+
+.analytics-main-dashboards-orders-orders {
+  padding: 10px 15px;
+  background-color: #E9FFEF;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.analytics-main-dashboards-orders-orders-link {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  text-decoration: none;
+  color: #2F4CDD;
+  font-weight: 600;
+}
+
+.analytics-main-dashboards-orders-orders-new {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.analytics-main-dashboards-orders-orders-new-count {
+  background-color: #2BC155;
+  border-radius: 8px;
+  padding: 8px 25px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.analytics-main-dashboards-orders-orders-new-text {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.analytics-main-dashboards-orders-dashboards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100% !important;
+}
+
+.analytics-main-dashboards-orders-dashboards > div {
+  min-width: 28%;
+  border-radius: 12px;
+  border: 1px solid #F2F2F2;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.analytics-main-dashboards-orders-dashboards-count {
+  color: #3E4954;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+.analytics-main-dashboards-orders-dashboards-title {
+  color: #969BA0;
+}
+
+.analytics-main-dashboards-orders-diagram {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+.analytics-main-dashboards-orders-diagram-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.analytics-main-dashboards-orders-diagram-summary > div {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  align-items: center;
+}
+
+.analytics-main-dashboards-orders-diagram-summary-item-title {
+  min-width: 140px;
+  color: #3E4954;
+  font-weight: 500, Medium;
+}
+
+.analytics-main-dashboards-orders-diagram-summary-item-count {
+  color: #969BA0;
+  font-weight: 500, Medium;
+}
+
+.analytics-main-dashboards-orders-diagram-summary-item-bar {
+  background-color: #F3F3F3;
+  width: 500px;
+  height: 5px;
+  border-radius: 8px;
+}
+
+.analytics-main-dashboards-orders-diagram-summary-item-bar > div {
+  height: 100%;
+  border-radius: 8px;
+}
+
+.analytics-main-dashboards-revenue-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.analytics-main-dashboards-revenue-data > div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.analytics-main-dashboards-revenue-data > div > div {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
+
+.analytics-main-dashboards-revenue-data-titles-item-square {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+}
+
+.bg-blue {
+  background-color: #2F4CDD;
+}
+
+.bg-purple {
+  background-color: #B519EC;
+}
+
+.analytics-main-dashboards-revenue-data-counts-item {
+  align-items: flex-end !important;
+}
+
+.analytics-main-dashboards-revenue-data-counts-item-data-title {
+  color: #969BA0;
+  font-size: 0.8rem;
+}
+
+.analytics-main-dashboards-revenue-data-counts-item-data-total {
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.analytics-main-dashboards-revenue-chart {
+  margin-top: 100px;
+}
+
+.analytics-main-dashboards-source-efficiency-chart {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.analytics-main-dashboards-source-efficiency-chart-source-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.analytics-main-dashboards-source-efficiency-chart-source-item-title {
+  min-width: 400px;
+}
+
+.analytics-main-dashboards-source-efficiency-chart-source-item-bar {
+  background-color: #2F4CDD;
+  height: 15px;
+}
+

@@ -59,10 +59,37 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding-right: 50px;
 }
 
 .products-data-body-product-avatar img {
   width: 70px;
   height: 70px;
   border-radius: 12px;
+}
+
+.products-data-body-product-data {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.products-data-body-product-data-title {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.products-data-body-product-data-category {
+  font-size: 1rem;
+  color: #2F4CDD;
+}
+
+.products-data-body-product-data-delivery {
+  font-size: 0.8rem;
+  color: #969BA0;
+}
+
+.products-data-body-product-price {
+  margin-right: 30px;
 }

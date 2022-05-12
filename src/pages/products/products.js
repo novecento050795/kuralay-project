@@ -15,7 +15,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -23,7 +23,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -31,7 +31,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -39,7 +39,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -47,7 +47,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -55,7 +55,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -63,7 +63,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -71,7 +71,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -79,7 +79,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -87,7 +87,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -95,7 +95,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -103,7 +103,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -111,7 +111,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -119,7 +119,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -127,7 +127,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -135,7 +135,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -143,7 +143,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -151,7 +151,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -159,7 +159,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
         {
@@ -167,7 +167,7 @@ export default class Products extends React.Component {
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
-          amount: '$5.67',
+          amount: '5.67',
           status: 'new'
         },
       ]
@@ -188,7 +188,12 @@ export default class Products extends React.Component {
               sort={'best-sale'}
               header={'Наиболее продаваемые товары'}
             ></ProductList>
-            <div className='products-data'></div>
+            <div className='products-data'>
+              <div className='products-data-header'>Рейтинг продуктов</div>
+              <div className='products-data-body'>
+
+              </div>
+            </div>
           </div>
           <div className='products-body-row'>
             <ProductList 
@@ -220,10 +225,14 @@ export class ProductList extends React.Component {
                 <img src={avatar} alt='img' />
               </div>
               <div className='products-data-body-product-data'>
-
+                <div className='products-data-body-product-data-title'>{product.name}</div>
+                <div className='products-data-body-product-data-category'>{product.item}</div>
+                <div className='products-data-body-product-data-delivery'>
+                  <span>Serves for 4 Person | 24mins</span>
+                </div>
               </div>
               <div className='products-data-body-product-price'>
-
+                ${product.amount}
               </div>
             </div>
           ))}
