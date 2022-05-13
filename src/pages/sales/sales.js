@@ -328,10 +328,6 @@ export default class Sales extends React.Component {
             </div>
           </div>
         </div>
-        <div className='sales-gistogram-container'>
-          <div className='sales-gistogram white-card'>
-          </div>
-        </div>
       </div>
     );
   }
