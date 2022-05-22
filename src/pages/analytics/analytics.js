@@ -10,10 +10,9 @@ import {
   LinearScale, 
   PointElement, 
   LineElement, 
-  Title 
+  Title,
 } from 'chart.js';
-import { Doughnut, Line } from 'react-chartjs-2';
-import { Link } from 'react-router-dom';
+import { Doughnut, Line, Scatter } from 'react-chartjs-2';
 
 ChartJS.register(
   ArcElement, 
@@ -37,6 +36,14 @@ export let doughnutData = {
       ]
     },
   ],
+};
+
+export const scatterOptions = {
+  scales: {
+    y: {
+      beginAtZero: true,
+    },
+  },
 };
 
 export const lineChartOptions = {
@@ -95,6 +102,35 @@ export let lineChartData = {
       data: labels.map(month => Math.random(500)),
       borderColor: '#F0502E',
       backgroundColor: '#F0502E',
+    },
+  ],
+};
+
+export const scatterData = {
+  datasets: [
+    {
+      label: 'A dataset',
+      data: Array.from({ length: 100 }, () => ({
+        x: Math.random(200) - 100,
+        y: Math.random(200) - 100,
+      })),
+      backgroundColor: '#FF6D4C',
+    },
+    {
+      label: 'A dataset',
+      data: Array.from({ length: 100 }, () => ({
+        x: Math.random(200) - 100,
+        y: Math.random(200) - 100,
+      })),
+      backgroundColor: '#2BC155',
+    },
+    {
+      label: 'A dataset',
+      data: Array.from({ length: 100 }, () => ({
+        x: Math.random(200) - 100,
+        y: Math.random(200) - 100,
+      })),
+      backgroundColor: '#3E4954',
     },
   ],
 };
@@ -195,6 +231,9 @@ export default class Analytics extends React.Component {
                 <div style={{width: '24%'}} className='analytics-main-dashboards-source-efficiency-chart-source-item-bar'></div>
               </div>
             </div>
+          </div>
+          <div className='analytics-main-dashboards-revenue white-card'>
+            <Scatter options={scatterOptions} data={scatterData} />
           </div>
         </div>
       </div>

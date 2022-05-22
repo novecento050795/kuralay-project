@@ -1,15 +1,24 @@
 import React from 'react';
 import DateRangePicker from '../../components/date-range-picker/dateRangePicker';
 import './orders.css';
-
-
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 export default class Orders extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      inputStatusDefault: 'new',
       page: 1,
+      showModal: false,
       orders: [
         {
           id: '#5552351',
@@ -711,6 +720,16 @@ export default class Orders extends React.Component {
     }
   }
 
+  handleOpen = (order) => {
+    console.log(order)
+    this.setState({ showModal: true })
+  };
+  handleClose = () => this.setState({ showModal: false });
+  handleChange = (event) => {
+    this.setState({ inputStatusDefault: event.target.value });
+    console.log(event.target.value)
+  };
+
   onPageSelected(page, isAdd = false) {
 
     if (isAdd) {
@@ -774,7 +793,7 @@ export default class Orders extends React.Component {
                       <td>{order.location}</td>
                       <td>{order.amount}</td>
                       <td>
-                        <div className={
+                        <div onClick={() => this.handleOpen(order.id)} className={
                           'orders-table-item-status ' + (
                             order.status === 'new' ? 'status-new' :
                               (
@@ -828,6 +847,29 @@ export default class Orders extends React.Component {
             </div>
           </div>
         </div>
+
+        <Dialog open={this.state.showModal} onClose={this.handleClose}>
+          <DialogTitle>Изменение статуса</DialogTitle>
+          <DialogContent>
+          <FormControl fullWidth>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={this.state.inputStatusDefault}
+              label="Age"
+              onChange={this.handleChange}
+            >
+              <MenuItem value={'new'}>Новый</MenuItem>
+              <MenuItem value={'delivery'}>На доставке</MenuItem>
+              <MenuItem value={'done'}>Доставлено</MenuItem>
+            </Select>
+          </FormControl>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose}>Отмена</Button>
+            <Button onClick={this.handleClose}>ОК</Button>
+          </DialogActions>
+        </Dialog>
       </div>
     ); 
   }

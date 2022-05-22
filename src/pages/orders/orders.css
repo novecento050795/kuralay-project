@@ -40,6 +40,7 @@
 .orders-table-item-status {
   border-radius: 10px;
   padding: 3px 5px;
+  cursor: pointer;
 }
 
 .status-new {
