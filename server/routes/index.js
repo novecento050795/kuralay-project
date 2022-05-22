@@ -25,4 +25,10 @@ router.get('/clients/get', function(req, res, next) {
     .catch(err => res.json(err))
 })
 
+router.get('/products/get', function(req, res, next) {
+  db.selectMany('products')
+    .then(products => res.json(products))
+    .catch(err => res.json())
+})
+
 module.exports = router;

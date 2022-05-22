@@ -2,6 +2,7 @@ import './products.css';
 import React from 'react';
 import DateRangePicker from '../../components/date-range-picker/dateRangePicker';
 import avatar from '../../static/img/avatar.jpg';
+import axios from 'axios';
 
 export default class Products extends React.Component {
   
@@ -9,41 +10,32 @@ export default class Products extends React.Component {
     super(props);
     this.state = {
       page: 1,
-      products: [
-        {
-          id: '#124',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#3245',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#456456',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#12314545',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        }
-      ]
+      products: []
+
+          // id: '#456456',
+          // date: '26 March 2020, 12:42 AM',
+          // name: 'Pizza Meal for Kids (Small size)',
+          // item: 'PIZZA',
+          // amount: '5.67',
+          // status: 'new'
     }
+
+    axios.get('http://localhost:3030/products/get')
+      .then(res => res.data)
+      .then(products => {
+        axios.get('http://localhost:3030/orders/get')
+          .then(res => res.data)
+          .then(orders => {
+            products.forEach(product => {
+              const relatedOrders = orders.filter(order => order.product_id == product.id);
+              product.amount = relatedOrders
+                .reduce((sum, order) => parseInt(sum) + parseInt(product.price), 0);
+              product.sellCount = relatedOrders.length;
+              this.setState({ products })
+            })
+          })
+      })
+
   }
 
   render() {
@@ -108,11 +100,15 @@ export default class Products extends React.Component {
 
 export class ProductList extends React.Component {
   render() {
+    
     return (
       <div className='products-data'>
         <div className='products-data-header'>{this.props.header}</div>
         <div className='products-data-body'>
-          {this.props.products.map(product => (
+          {this.props.products.sort(this.props.sort === 'best-sale' ? ((a, b) => b.sellCount - a.sellCount) : (
+            this.props.sort === 'worst-sale' ? ((a, b) => a.sellCount - b.sellCount) : 
+              ((a, b) => a.id - b.id)
+          )).map(product => (
             <div className='products-data-body-product' key={product.id}>
               <div className='products-data-body-product-avatar'>
                 <img src={avatar} alt='img' />
