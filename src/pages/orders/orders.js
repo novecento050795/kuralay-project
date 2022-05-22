@@ -6,11 +6,10 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import axios from 'axios';
 export default class Orders extends React.Component {
 
   constructor(props) {
@@ -19,715 +18,32 @@ export default class Orders extends React.Component {
       inputStatusDefault: 'new',
       page: 1,
       showModal: false,
-      orders: [
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'delivery'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-          status: 'done'
-        },
-      ]
+      orders: [],
+      orderOnChange: null
     }
+
+    axios.get('http://localhost:3030/orders/get')
+      .then(orders => orders.data)
+      .then(orders => {
+        this.setState({ orders })
+      })
+
   }
 
   handleOpen = (order) => {
-    console.log(order)
-    this.setState({ showModal: true })
+    this.setState({ showModal: true, orderOnChange: order })
   };
   handleClose = () => this.setState({ showModal: false });
+  handle = () => {
+    axios.put('http://localhost:3030/orders/update', {
+      order_id: this.state.orderOnChange,
+      status: this.state.inputStatusDefault
+    }).then(resp => {
+      window.location.reload()
+    })
+  }
   handleChange = (event) => {
     this.setState({ inputStatusDefault: event.target.value });
-    console.log(event.target.value)
   };
 
   onPageSelected(page, isAdd = false) {
@@ -779,12 +95,8 @@ export default class Orders extends React.Component {
                 <th>Статус заказа</th>
               </tr>
               {
-                this.state.orders.filter(
-                  (order, index) => (
-                    index > ((this.state.page - 1) * 10) && 
-                    index < (this.state.page * 10 + 1)
-                  )
-                )
+                this.state.orders
+                  .slice((this.state.page - 1) * 10, 10)
                   .map((order, index) => (
                     <tr className='orders-table-item' key={index}>
                       <td>{order.id}</td>
@@ -797,7 +109,9 @@ export default class Orders extends React.Component {
                           'orders-table-item-status ' + (
                             order.status === 'new' ? 'status-new' :
                               (
-                                order.status === 'delivery' ? 'status-delivery' : 'status-done'
+                                order.status === 'delivery' ? 'status-delivery' : (
+                                  order.status === 'done' ? 'status-done' : 'status-canceled'
+                                )
                               )
                           )
                           
@@ -805,7 +119,9 @@ export default class Orders extends React.Component {
                           {
                             order.status === 'new' ? 'Новый' :
                               (
-                                order.status === 'delivery' ? 'Доставка' : 'Доставлено'
+                                order.status === 'delivery' ? 'Доставка' : (
+                                  order.status === 'done' ? 'Доставлено' : 'Отменен'
+                                )
                               )
                           }
                         </div>
@@ -818,12 +134,8 @@ export default class Orders extends React.Component {
           <div className='orders-table-pagination'>
             <div className='orders-table-pagination-counter'>
               Показано {
-              this.state.orders.filter(
-                  (order, index) => (
-                    index > ((this.state.page - 1) * 10) && 
-                    index < (this.state.page * 10 + 1)
-                  )
-                ).length
+              this.state.orders.slice((this.state.page - 1) * 10, 10)
+              .length
               } из {this.state.orders.length} заказов
             </div>
             <div className='orders-table-pagination-paginator'>
@@ -862,12 +174,13 @@ export default class Orders extends React.Component {
               <MenuItem value={'new'}>Новый</MenuItem>
               <MenuItem value={'delivery'}>На доставке</MenuItem>
               <MenuItem value={'done'}>Доставлено</MenuItem>
+              <MenuItem value={'canceled'}>Отменен</MenuItem>
             </Select>
           </FormControl>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose}>Отмена</Button>
-            <Button onClick={this.handleClose}>ОК</Button>
+            <Button onClick={this.handle}>ОК</Button>
           </DialogActions>
         </Dialog>
       </div>

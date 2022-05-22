@@ -55,3 +55,12 @@ export function selectMany(table, columns = '*', filter) {
 
   return db.many(`SELECT ${columns} from ${table} ${filter}`);
 }
+
+export function update(table, values, filter) {
+
+  values = Object.keys(values)
+    .map(key => `${key} = ${values[key]}`)
+    .join(', ');
+
+  return db.many(`UPDATE ${table} SET ${values} WHERE ${filter}`);
+}

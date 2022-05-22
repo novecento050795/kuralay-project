@@ -3,16 +3,20 @@ var router = express.Router();
 var db = require('../modules/db');
 var cors = require('cors')
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+router.use(cors())
 
-router.get('/orders/get', cors(), function (req, res, next) {
+router.get('/orders/get', function (req, res, next) {
   db.selectMany('orders')
     .then(orders => res.json(orders))
-    .catch(err => res.json(err))
-    
+    .catch(err => res.json(err)) 
+})
+
+router.put('/orders/update', function(req, res, next) {
+  db.update('orders', {
+    status: req.body.status
+  }, `WHERE id = ${req.body.order_id}`)
+    .then(orders => res.json(orders))
+    .catch(err => res.json(err)) 
 })
 
 module.exports = router;

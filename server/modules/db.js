@@ -49,6 +49,14 @@ module.exports = {
     }
   
     return db.many(`SELECT ${columns} from ${table} ${filter}`);
+  },
+  update: function(table, values, filter) {
+
+    values = Object.keys(values)
+      .map(key => `${key} = '${values[key]}'`)
+      .join(', ');
+
+    return db.many(`UPDATE ${table} SET ${values} ${filter}`);
   }
 };
 

@@ -53,6 +53,11 @@
   color: #2F4CDD;
 }
 
+.status-canceled {
+   background-color: #db531d;
+   color: black;
+}
+
 .status-done {
   background-color: rgba(43, 193, 85, 0.05);
   color: #2BC155;
