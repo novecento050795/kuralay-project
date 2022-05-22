@@ -43,7 +43,7 @@ module.exports = {
         })
       })
   },
-  selectMany: function (table, columns = '*', filter) {
+  selectMany: function (table, columns = '*', filter = '') {
     if (Array.isArray(columns)) {
       columns = columns.join(', ');
     }

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import DateRangePicker from '../../components/date-range-picker/dateRangePicker';
 import './clients.css';
@@ -6,160 +7,41 @@ import './clients.css';
 
 export default class Clients extends React.Component {
 
+  sources = {
+    1: 'Yandex',
+    2: 'Google',
+    3: 'Рассылки',
+    4: 'Таргет Instagram',
+    5: 'Таргет Facebook',
+    6: 'Промоакции',
+    7: 'Другие'
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       page: 1,
-      clients: [
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-        {
-          id: '#5552351',
-          source: 'Instagram',
-          name: 'James WItcwicky',
-          location: 'Corner Street 5th London',
-          amount: '$164.52',
-        },
-      ]
+      clients: []
     }
+
+    axios.get('http://localhost:3030/clients/get')
+      .then(res => res.data)
+      .then(clients => {
+        if (clients.length) {
+          clients.map(client => {
+            axios.get('http://localhost:3030/orders/get')
+              .then(res => res.data)
+              .then(orders => {
+                client.amount = orders
+                  .filter(order => client.id == order.client_id)
+                  .reduce((sum, order) => parseInt(sum) + parseInt(order.amount), 0);
+
+                this.setState({ clients })
+              })
+            client.source = this.sources[client.source_id]
+          });
+        }
+      })
   }
 
   onPageSelected(page, isAdd = false) {
@@ -210,18 +92,14 @@ export default class Clients extends React.Component {
                 <th>Сумма</th>
               </tr>
               {
-                this.state.clients.filter(
-                  (order, index) => (
-                    index > ((this.state.page - 1) * 10) && 
-                    index < (this.state.page * 10 + 1)
-                  )
-                )
+                this.state.clients
+                  .slice(((this.state.page - 1) * 10), 10)
                   .map((order, index) => (
                     <tr className='clients-table-item' key={index}>
                       <td>{order.id}</td>
                       <td>{order.name}</td>
                       <td>{order.source}</td>
-                      <td>{order.location}</td>
+                      <td>{order.address}</td>
                       <td>{order.amount}</td>
                     </tr>
                   ))
@@ -231,12 +109,7 @@ export default class Clients extends React.Component {
           <div className='clients-table-pagination'>
             <div className='clients-table-pagination-counter'>
               Показано {
-              this.state.clients.filter(
-                  (order, index) => (
-                    index > ((this.state.page - 1) * 10) && 
-                    index < (this.state.page * 10 + 1)
-                  )
-                ).length
+              this.state.clients.slice(((this.state.page - 1) * 10), 10).length
               } из {this.state.clients.length} Клиентов
             </div>
             <div className='clients-table-pagination-paginator'>

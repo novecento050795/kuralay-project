@@ -48,7 +48,7 @@ export function insert(table, rows) {
     })
 }
 
-export function selectMany(table, columns = '*', filter) {
+export function selectMany(table, columns = '*', filter = '') {
   if (Array.isArray(columns)) {
     columns = columns.join(', ');
   }

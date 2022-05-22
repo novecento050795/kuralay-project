@@ -19,4 +19,10 @@ router.put('/orders/update', function(req, res, next) {
     .catch(err => res.json(err)) 
 })
 
+router.get('/clients/get', function(req, res, next) {
+  db.selectMany('clients')
+    .then(clients => res.json(clients))
+    .catch(err => res.json(err))
+})
+
 module.exports = router;
