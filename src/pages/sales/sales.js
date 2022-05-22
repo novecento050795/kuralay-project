@@ -1,6 +1,8 @@
 import React from 'react';
 import './sales.css';
 import DateRangePicker from '../../components/date-range-picker/dateRangePicker';
+import axios from 'axios';
+
 import { 
   Chart as ChartJS, 
   ArcElement, 
@@ -29,7 +31,7 @@ ChartJS.register(
 export let doughnutData = {
   datasets: [
     {
-      data: [12, 19, 3],
+      data: [1, 1, 1],
       backgroundColor: [
         '#3E4954',
         '#FF6D4C',
@@ -80,13 +82,13 @@ export let lineChartData = {
   datasets: [
     {
       label: 'Доход',
-      data: labels.map(month => Math.random(500)),
+      data: labels.map(month => 0),
       borderColor: '#2F4CDD',
       backgroundColor: '#2F4CDD',
     },
     {
       label: 'Расход',
-      data: labels.map(month => Math.random(500)),
+      data: labels.map(month => 0),
       borderColor: '#B519EC',
       backgroundColor: '#B519EC',
     },
@@ -94,6 +96,80 @@ export let lineChartData = {
 };
 
 export default class Sales extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      orders: [],
+      lineChartData,
+      ordersMeta: {},
+      doughnutData
+    }
+
+    axios.get('http://localhost:3030/orders/get')
+      .then(orders => orders.data)
+      .then(orders => {
+        this.setState({ orders })
+        orders.forEach(element => {
+          this.setState({ 
+            lineChartData: {
+              labels,
+              datasets: [
+                {
+                  label: 'Доход',
+                  data: labels.map((month, index) => 
+                    orders.filter(order => (new Date(order.date)).getMonth() == index)
+                      .reduce((sum, order) => sum + order.amount, 0)
+                  ),
+                  borderColor: '#2F4CDD',
+                  backgroundColor: '#2F4CDD',
+                },
+                {
+                  label: 'Расход',
+                  data: labels.map((month, index) => 
+                  orders.filter(order => (new Date(order.date)).getMonth() == index)
+                    .reduce((sum, order) => sum + order.outbound, 0)
+                ),
+                  borderColor: '#B519EC',
+                  backgroundColor: '#B519EC',
+                },
+              ],
+            } 
+          })
+          console.log(new Date(element.date))
+        });
+
+        this.setState({
+          ordersMeta: {
+            inbound: orders.filter(order => order.status === 'done').reduce((sum, order) => parseInt(sum) + parseInt(order.amount), 0),
+            outbound: orders.filter(order => order.status === 'done').reduce((sum, order) => parseInt(sum) + parseInt(order.outbound), 0),
+            delivery: orders.filter(order => order.status === 'delivery').length,
+            done: orders.filter(order => order.status === 'done').length,
+            canceled: orders.filter(order => order.status === 'canceled').length,
+            new: orders.filter(order => order.status === 'new').length
+          },
+          doughnutData: {
+            datasets: [
+              {
+                data: [
+                  orders.filter(order => order.status === 'delivery').length,
+                  orders.filter(order => order.status === 'done').length,
+                  orders.filter(order => order.status === 'canceled').length,
+
+                ],
+                backgroundColor: [
+                  '#3E4954',
+                  '#FF6D4C',
+                  '#2BC155',
+                ]
+              },
+            ],
+          }
+        })
+        
+      })
+  }
+
   render() {
     return (
       <div className='sales-main'>
@@ -109,7 +185,11 @@ export default class Sales extends React.Component {
               </svg>
             </div>
             <div className='sales-header-dashboard-revenue-data'>
-              <div className='sales-header-dashboard-revenue-data-total'>1260000</div>
+              <div className='sales-header-dashboard-revenue-data-total'>
+                {
+                  this.state.ordersMeta.inbound
+                }
+              </div>
               <div className='sales-header-dashboard-revenue-data-title'>Общий доход</div>
               <div className='sales-header-dashboard-revenue-data-percentage'>
                 <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +224,11 @@ export default class Sales extends React.Component {
               </svg>
             </div>
             <div className='sales-header-dashboard-revenue-data'>
-              <div className='sales-header-dashboard-revenue-data-total'>279</div>
+              <div className='sales-header-dashboard-revenue-data-total'>
+                {
+                  this.state.orders.length
+                }
+              </div>
               <div className='sales-header-dashboard-revenue-data-title'>Общие заказы</div>
               <div className='sales-header-dashboard-revenue-data-percentage'>
                 <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +262,11 @@ export default class Sales extends React.Component {
               </svg>
             </div>
             <div className='sales-header-dashboard-revenue-data'>
-              <div className='sales-header-dashboard-revenue-data-total'>65</div>
+              <div className='sales-header-dashboard-revenue-data-total'>
+                {
+                  [...new Set(this.state.orders.map(order => order.client_id))].length
+                }
+              </div>
               <div className='sales-header-dashboard-revenue-data-title'>Общие покупатели</div>
               <div className='sales-header-dashboard-revenue-data-percentage'>
                 <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,13 +300,18 @@ export default class Sales extends React.Component {
             </div>
             <div className='sales-main-dashboards-orders-orders'>
               <div className='sales-main-dashboards-orders-orders-new'>
-                <div className='sales-main-dashboards-orders-orders-new-count'>25</div>
+                <div className='sales-main-dashboards-orders-orders-new-count'>
+                  {
+                    this.state.orders.filter(order => order.status === 'new').length
+                  }
+                </div>
                 <div className='sales-main-dashboards-orders-orders-new-text'>
                   <div>Новые заказы</div>
                   <div>
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="5.5" cy="5.5" r="5.5" fill="#2BC155"/>
                     </svg>
+
                   </div>
                 </div>
               </div>
@@ -233,45 +326,75 @@ export default class Sales extends React.Component {
             </div>
             <div className='sales-main-dashboards-orders-dashboards'>
               <div>
-                <div className='sales-main-dashboards-orders-dashboards-count'>25</div>
+                <div className='sales-main-dashboards-orders-dashboards-count'>
+                  {
+                    this.state.ordersMeta.delivery
+                  }
+                </div>
                 <div className='sales-main-dashboards-orders-dashboards-title'>На доставке</div>
               </div>
               <div>
-                <div className='sales-main-dashboards-orders-dashboards-count'>60</div>
+                <div className='sales-main-dashboards-orders-dashboards-count'>
+                  {
+                    this.state.ordersMeta.done
+                  }
+                </div>
                 <div className='sales-main-dashboards-orders-dashboards-title'>Доставлено</div>
               </div>
               <div>
-                <div className='sales-main-dashboards-orders-dashboards-count'>7</div>
+                <div className='sales-main-dashboards-orders-dashboards-count'>
+                  {
+                    this.state.ordersMeta.canceled
+                  }
+                </div>
                 <div className='sales-main-dashboards-orders-dashboards-title'>Отменено</div>
               </div>
             </div>
             <div className='sales-main-dashboards-orders-diagram'>
               <div className='sales-main-dashboards-orders-diagram-diagram'>
               <Doughnut
-                data={doughnutData}
+                data={this.state.doughnutData}
               />
               </div>
               <div className='sales-main-dashboards-orders-diagram-summary'>
                 <div className='sales-main-dashboards-orders-diagram-summary-item'>
-                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>На доставке (15%)</div>
-                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
-                    <div style={{width: '80%', 'backgroundColor': '#FF6D4C'}}></div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>
+                    На доставке ({
+                    100 * this.state.ordersMeta.delivery / 
+                      (this.state.ordersMeta.done + this.state.ordersMeta.canceled + this.state.ordersMeta.delivery)
+                    }%)
                   </div>
-                  <div className='sales-main-dashboards-orders-diagram-summary-count'>25</div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
+                    <div style={{width: `${100 * this.state.ordersMeta.delivery / 
+                      (this.state.ordersMeta.done + this.state.ordersMeta.canceled + this.state.ordersMeta.delivery)}%`, 'backgroundColor': '#FF6D4C'}}></div>
+                  </div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-count'>{this.state.ordersMeta.delivery}</div>
                 </div>
                 <div className='sales-main-dashboards-orders-diagram-summary-item'>
-                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>Доставлено (15%)</div>
-                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
-                    <div style={{width: '60%', 'backgroundColor': '#2BC155'}}></div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>
+                    Доставлено ({
+                    100 * this.state.ordersMeta.done / 
+                      (this.state.ordersMeta.done + this.state.ordersMeta.canceled + this.state.ordersMeta.delivery)
+                    }%)
                   </div>
-                  <div className='sales-main-dashboards-orders-diagram-summary-count'>60</div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
+                    <div style={{width: `${100 * this.state.ordersMeta.done / 
+                      (this.state.ordersMeta.done + this.state.ordersMeta.canceled + this.state.ordersMeta.delivery)}%`, 'backgroundColor': '#2BC155'}}></div>
+                  </div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-count'>{this.state.ordersMeta.done}</div>
                 </div>
                 <div className='sales-main-dashboards-orders-diagram-summary-item'>
-                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>Отменено (15%)</div>
-                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
-                    <div style={{width: '40%', 'backgroundColor': '#3E4954'}}></div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-title'>
+                    Отменено ({
+                    100 * this.state.ordersMeta.canceled / 
+                      (this.state.ordersMeta.done + this.state.ordersMeta.canceled + this.state.ordersMeta.delivery)
+                    }%)
                   </div>
-                  <div className='sales-main-dashboards-orders-diagram-summary-count'>7</div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-item-bar'>
+                    <div style={{width: `${100 * this.state.ordersMeta.canceled / 
+                      (this.state.ordersMeta.done + this.state.ordersMeta.canceled + this.state.ordersMeta.delivery)}%`, 'backgroundColor': '#3E4954'}}></div>
+                  </div>
+                  <div className='sales-main-dashboards-orders-diagram-summary-count'>{this.state.ordersMeta.canceled}</div>
                 </div>
               </div>
             </div>
@@ -304,7 +427,11 @@ export default class Sales extends React.Component {
                   </div>
                   <div className='sales-main-dashboards-revenue-data-counts-item-data'>
                     <div className='sales-main-dashboards-revenue-data-counts-item-data-title'>Доход</div>
-                    <div className='sales-main-dashboards-revenue-data-counts-item-data-total'>$126,000</div>
+                    <div className='sales-main-dashboards-revenue-data-counts-item-data-total'>
+                      ${
+                        this.state.ordersMeta.inbound
+                      }
+                    </div>
                   </div>
                 </div>
                 <div className='sales-main-dashboards-revenue-data-counts-item'>
@@ -318,13 +445,18 @@ export default class Sales extends React.Component {
                   </div>
                   <div className='sales-main-dashboards-revenue-data-counts-item-data'>
                     <div className='sales-main-dashboards-revenue-data-counts-item-data-title'>Расход</div>
-                    <div className='sales-main-dashboards-revenue-data-counts-item-data-total'>$126,000</div>
+                    <div className='sales-main-dashboards-revenue-data-counts-item-data-total'>
+                      ${
+                        this.state.ordersMeta.outbound
+
+                      }
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className='sales-main-dashboards-revenue-chart'>
-              <Line options={lineChartOptions} data={lineChartData} />
+              <Line options={lineChartOptions} data={this.state.lineChartData} />
             </div>
           </div>
         </div>

@@ -29,3 +29,29 @@ export function createTable(tableName, fields) {
       console.log(`_____${tableName} ERROR!: ${error}_____`);
     })
 }
+
+export function insert(table, rows) {
+  
+  rows.forEach(row => {
+    const fields = Object.keys(row).join(', ');
+    const values = Object.values(row)
+      .map(value => `'${value}'`)
+      .join(', ');
+
+    db.oneOrNone(`INSERT INTO ${table} (${fields}) VALUES (${values})`)
+      .then(data => {
+        console.log(`_____ INSERTED INTO ${table} sucessfully!_____`);
+      })
+      .catch(error => {
+        console.log(`_____INSERTING INTO ${table} ERROR!: ${error}_____`);
+      })
+    })
+}
+
+export function selectMany(table, columns = '*', filter) {
+  if (Array.isArray(columns)) {
+    columns = columns.join(', ');
+  }
+
+  return db.many(`SELECT ${columns} from ${table} ${filter}`);
+}

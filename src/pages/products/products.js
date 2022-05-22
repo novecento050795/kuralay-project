@@ -11,7 +11,7 @@ export default class Products extends React.Component {
       page: 1,
       products: [
         {
-          id: '#5552351',
+          id: '#124',
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
@@ -19,7 +19,7 @@ export default class Products extends React.Component {
           status: 'new'
         },
         {
-          id: '#5552351',
+          id: '#3245',
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
@@ -27,7 +27,7 @@ export default class Products extends React.Component {
           status: 'new'
         },
         {
-          id: '#5552351',
+          id: '#456456',
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
@@ -35,141 +35,13 @@ export default class Products extends React.Component {
           status: 'new'
         },
         {
-          id: '#5552351',
+          id: '#12314545',
           date: '26 March 2020, 12:42 AM',
           name: 'Pizza Meal for Kids (Small size)',
           item: 'PIZZA',
           amount: '5.67',
           status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
-        {
-          id: '#5552351',
-          date: '26 March 2020, 12:42 AM',
-          name: 'Pizza Meal for Kids (Small size)',
-          item: 'PIZZA',
-          amount: '5.67',
-          status: 'new'
-        },
+        }
       ]
     }
   }
@@ -192,7 +64,7 @@ export default class Products extends React.Component {
               <div className='products-data-header'>Рейтинг продуктов</div>
               <div className='products-data-body'>
                 {this.state.products.map(product => (
-                  <div className='products-data-body-item'>
+                  <div className='products-data-body-item' key={product.id}>
                     <div className='products-data-body-item-image'></div>
                     <div className='products-data-body-item-title'>{product.name}</div>
                     <div className='products-data-body-item-review'>
@@ -241,7 +113,7 @@ export class ProductList extends React.Component {
         <div className='products-data-header'>{this.props.header}</div>
         <div className='products-data-body'>
           {this.props.products.map(product => (
-            <div className='products-data-body-product'>
+            <div className='products-data-body-product' key={product.id}>
               <div className='products-data-body-product-avatar'>
                 <img src={avatar} alt='img' />
               </div>
