@@ -25,7 +25,11 @@ function migrate() {
     id: 'serial PRIMARY KEY',
     name: 'text NOT NULL',
     source_id: 'int NOT NULL',
-    address: 'text NOT NULL'
+    address: 'text NOT NULL',
+    age: 'int NOT NULL',
+    gender: 'int NOT NULL',
+    timezone: 'int NOT NULL'
+
   });
 
   createTable('sources', {

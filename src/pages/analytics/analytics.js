@@ -134,29 +134,21 @@ export let lineChartData = {
 export const scatterData = {
   datasets: [
     {
-      label: 'A dataset',
+      label: 'Возраст',
       data: Array.from({ length: 100 }, () => ({
-        x: Math.random(200) - 100,
-        y: Math.random(200) - 100,
+        x: 0,
+        y: 0,
       })),
       backgroundColor: '#FF6D4C',
     },
     {
-      label: 'A dataset',
+      label: 'Источник',
       data: Array.from({ length: 100 }, () => ({
-        x: Math.random(200) - 100,
-        y: Math.random(200) - 100,
+        x: 0,
+        y: 0,
       })),
       backgroundColor: '#2BC155',
-    },
-    {
-      label: 'A dataset',
-      data: Array.from({ length: 100 }, () => ({
-        x: Math.random(200) - 100,
-        y: Math.random(200) - 100,
-      })),
-      backgroundColor: '#3E4954',
-    },
+    }
   ],
 };
 
@@ -170,7 +162,8 @@ export default class Analytics extends React.Component {
       ordersMeta: {},
       doughnutData,
       clients: [],
-      orderAmountMeta: {}
+      orderAmountMeta: {},
+      scatterData
     }
 
     axios.get('http://localhost:3030/orders/get')
@@ -294,6 +287,45 @@ export default class Analytics extends React.Component {
                       '#1dc4b6'
                     ]
                   },
+                ],
+              }
+            })
+
+            this.setState({
+              scatterData: {
+                datasets: [
+                  {
+                    label: 'Возраст - Источник',
+                    data: clients.map(client => ({
+                      x: client.age,
+                      y: client.source_id,
+                    })),
+                    backgroundColor: '#3E4954',
+                  },
+                  {
+                    label: 'Возраст - Пол',
+                    data: clients.map(client => ({
+                      x: client.age,
+                      y: client.gender,
+                    })),
+                    backgroundColor: '#2BC155',
+                  },
+                  {
+                    label: 'Возраст - Часовой пояс',
+                    data: clients.map(client => ({
+                      x: client.age,
+                      y: client.timezone,
+                    })),
+                    backgroundColor: '#FF6D4C',
+                  },
+                  {
+                    label: 'Пол - Часовой пояс',
+                    data: clients.map(client => ({
+                      x: client.gender,
+                      y: client.timezone,
+                    })),
+                    backgroundColor: '#a89e32',
+                  }
                 ],
               }
             })
@@ -469,7 +501,7 @@ export default class Analytics extends React.Component {
             </div>
           </div>
           <div className='analytics-main-dashboards-revenue white-card'>
-            <Scatter options={scatterOptions} data={scatterData} />
+            <Scatter options={scatterOptions} data={this.state.scatterData} />
           </div>
         </div>
       </div>
